@@ -13,8 +13,6 @@ spec:
       labels:
         app: google-spreadsheet-api
     spec:
-      serviceAccountName: google-service
-      automountServiceAccountToken: false
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -24,10 +22,20 @@ spec:
                     operator: In
                     values:
                       - default-pool
+      volumes:
+      - name: google-service-key
+        secret:
+          secretName: google-service-key
       containers:
       - name: google-spreadsheet-api
         image: gcr.io/skye-personal/google-spreadsheet-api:latest-SNAPSHOT
         imagePullPolicy: Always
+        volumeMounts:
+        - name: google-service-key
+          mountPath: /var/secrets/google
+        env:
+        - name: SERVICE_ACCOUNT_FILE
+          value: /var/secrets/google/key.json
         ports:
         - containerPort: 5000
         livenessProbe:
