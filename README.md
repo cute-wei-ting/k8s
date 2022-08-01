@@ -13,8 +13,9 @@
 
 - [k8s-setting](k8s-setting.sh)
   - dns
-  依其設定及後端建置
   - backend
+  
+  依其設定及後端建置
   - vpc,backend-subnet
   - firewall
   - lb ip address,forwarding-rules
