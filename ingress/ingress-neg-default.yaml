@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-nginx-default
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "web-test-lb2-ip"
+spec:
+  defaultBackend:
+    service:
+      name: google-spreadsheet-api
+      port:
+        number: 80
+  tls:
+  - hosts: 
+      - "*.skisle-region.tk"
+    secretName: web-test.cert
+  rules:
+  - host: "*.skisle-region.tk"
+    http:
+      paths:
+      - path: /google-spreadsheet-api
+        pathType: Prefix
+        backend:
+          service:
+            name: google-spreadsheet-api
+            port:
+                number: 80
