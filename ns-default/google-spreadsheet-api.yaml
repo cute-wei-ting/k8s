@@ -25,7 +25,7 @@ spec:
       volumes:
       - name: google-service-key
         secret:
-          secretName: google-service-key
+          secretName: google-service-credential
       containers:
       - name: google-spreadsheet-api
         image: gcr.io/skye-personal/google-spreadsheet-api:latest-SNAPSHOT
