@@ -78,6 +78,7 @@ Reference
 
     - image
       ![standalone negs image](https://cloud.google.com/static/kubernetes-engine/images/sneg2.svg)
+  - [NGINX Ingress or GKE Ingress?](https://medium.com/@glen.yu/nginx-ingress-or-gke-ingress-d87dd9db504c)
    
 
 
